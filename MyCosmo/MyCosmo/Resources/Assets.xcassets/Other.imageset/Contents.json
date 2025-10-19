@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "pngtree-ufo-colored-cartoon-png-image_6671354.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "pngtree-ufo-colored-cartoon-png-image_6671354@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "pngtree-ufo-colored-cartoon-png-image_6671354@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

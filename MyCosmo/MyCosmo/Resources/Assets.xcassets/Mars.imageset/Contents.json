@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Mars_(16716283421)_-_Transparent_background.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Mars_(16716283421)_-_Transparent_background@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Mars_(16716283421)_-_Transparent_background@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
