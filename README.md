@@ -1,6 +1,6 @@
-<img width="1608" alt="Screenshot 2025-01-27 at 19 02 22" src="https://github.com/user-attachments/assets/519d1d16-bc05-44f6-8d46-8c1788f9a7fd" />
+<img width="1920" height="1080" alt="Cover" src="https://github.com/user-attachments/assets/e06a826a-ac1c-47f5-a679-f7ac768267c8" />
 
-# MyCosmo
+---
 
 > Be your universe.
 
@@ -302,9 +302,6 @@ For more information, visit: https://creativecommons.org/licenses/by-nc-sa/4.0/
 ---
 
 <p align="center">
-  <img width="1608" alt="Screenshot 2025-01-26 at 15 56 41" src="https://github.com/user-attachments/assets/817f3ce8-a3b5-4de5-91de-d71c32b64df8" />
-</p>
-
-<p align="center">
+  <img width="1624" height="975" alt="Screenshot 2025-10-19 at 18 04 35" src="https://github.com/user-attachments/assets/92d4ee42-4522-4251-a496-0bd22280f3a9" />
   Made with ❤️ and ☕ for space enthusiasts everywhere
 </p>
