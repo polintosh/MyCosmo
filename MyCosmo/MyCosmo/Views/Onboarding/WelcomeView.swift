@@ -2,72 +2,67 @@
 //  WelcomeView.swift
 //  MyCosmo
 //
-//  First screen of the onboarding flow with animated entrance.
-//  Demonstrates SwiftUI animations with opacity and offset modifiers.
-//  Introduces the app with branding and call-to-action button.
-//
-//  Key Features:
-//  - Fade-in and slide-up animations on appear
-//  - Timed animation using withAnimation and easeOut
-//  - Closure-based navigation to next page
-//
-//  Architecture: First page in onboarding flow.
+//  Welcome screen introducing the app with branding.
+//  Demonstrates native SF Symbols, VStack composition, and animation modifiers.
 //
 
 import SwiftUI
 
 // MARK: - WelcomeView
 
-/// First screen of the onboarding experience with animated entrance.
-/// Uses SwiftUI animations to create a polished welcome experience.
+/// First onboarding screen with app introduction.
+/// Learning Focus: Symbol animations, VStack spacing, and phaseAnimator.
 struct WelcomeView: View {
-    let nextPage: () -> Void
-    @State private var isAnimated = false
+    @State private var isVisible = false
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 32) {
             Spacer()
 
-            // App icon with fade-in
-            Image("IconResource")
+            // SF Symbol with native multicolor rendering
+            Image(systemName: "sparkles")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 180, height: 180)
-                .opacity(isAnimated ? 1 : 0)
+                .frame(width: 100, height: 100)
+                .symbolRenderingMode(.multicolor)
+                .symbolEffect(.bounce, value: isVisible)
 
-            // App title and tagline with slide-up animation
-            VStack(spacing: 16) {
-                Text("MyCosmo")
-                    .font(.system(size: 44, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-
-                Text("Be your universe")
+            // App branding with high-contrast text styles
+            VStack(spacing: 12) {
+                Text("Welcome to")
                     .font(.title2)
-                    .italic()
-                    .foregroundColor(.white.opacity(0.8))
+                    .fontWeight(.medium)
+                    .foregroundStyle(.white.opacity(0.8))
+
+                Text("MyCosmo")
+                    .font(.system(size: 48, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+
+                Text("Explore the universe and track your cosmic journey")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.white.opacity(0.7))
+                    .padding(.horizontal, 40)
             }
-            .opacity(isAnimated ? 1 : 0)
-            .offset(y: isAnimated ? 0 : 20)
 
             Spacer()
 
-            // Continue button
-            Button(action: nextPage) {
-                Text("Begin Your Journey")
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(Color.white)
-                    .cornerRadius(16)
+            // Native instructional text with SF Symbol
+            HStack(spacing: 8) {
+                Image(systemName: "hand.draw.fill")
+                    .font(.caption)
+                Text("Swipe to continue")
+                    .font(.subheadline)
             }
-            .padding(.horizontal, 40)
-            .padding(.bottom, 48)
-            .opacity(isAnimated ? 1 : 0)
+            .foregroundStyle(.white.opacity(0.5))
+            .padding(.bottom, 50)
         }
+        // Smooth fade-in animation using native spring curve
+        .opacity(isVisible ? 1 : 0)
+        .offset(y: isVisible ? 0 : 30)
         .onAppear {
-            withAnimation(.easeOut(duration: 0.8)) {
-                isAnimated = true
+            withAnimation(.spring(duration: 0.8, bounce: 0.3)) {
+                isVisible = true
             }
         }
     }

@@ -2,61 +2,44 @@
 //  OnboardingView.swift
 //  MyCosmo
 //
-//  Main container for the app's onboarding experience flow.
-//  Manages page transitions and completion state using SwiftUI state management.
-//  Demonstrates custom background gradients and page-based navigation.
-//
-//  Key Features:
-//  - State-driven page navigation
-//  - Smooth transitions between onboarding screens
-//  - Binding to parent view for completion tracking
-//  - Custom gradient background for branded experience
-//
-//  Architecture: Container view managing onboarding flow state.
+//  Main container for the onboarding experience.
+//  Demonstrates TabView with PageTabViewStyle for native page-based navigation.
 //
 
 import SwiftUI
 
 // MARK: - OnboardingView
 
-/// Container view managing the onboarding experience flow.
-/// Uses state to track current page and binding to signal completion.
+/// Container view managing the onboarding flow with native paging.
+/// Learning Focus: TabView with PageTabViewStyle for horizontal scrolling.
 struct OnboardingView: View {
     @Binding var hasCompletedOnboarding: Bool
-    @State private var currentPage = 0
 
     var body: some View {
-        ZStack {
-            // Background gradient
+        // TabView provides native page-based navigation with swipe gestures
+        TabView {
+            WelcomeView()
+            FeaturesView()
+            ThanksView(completeOnboarding: {
+                withAnimation(.easeInOut) {
+                    hasCompletedOnboarding = true
+                }
+            })
+        }
+        // PageTabViewStyle enables horizontal paging with dots indicator
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .background {
+            // Native gradient background with cosmic theme
             LinearGradient(
                 colors: [
-                    Color(red: 13 / 255, green: 15 / 255, blue: 44 / 255),
-                    Color(red: 26 / 255, green: 30 / 255, blue: 88 / 255),
+                    Color(red: 0.05, green: 0.06, blue: 0.17),
+                    Color(red: 0.1, green: 0.12, blue: 0.35)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
-
-            // Page content with transitions
-            Group {
-                switch currentPage {
-                case 0:
-                    WelcomeView(nextPage: { currentPage = 1 })
-                case 1:
-                    FeaturesView(nextPage: { currentPage = 2 })
-                case 2:
-                    ThanksView(
-                        completeOnboarding: {
-                            withAnimation {
-                                hasCompletedOnboarding = true
-                            }
-                        })
-                default:
-                    EmptyView()
-                }
-            }
-            .transition(.opacity)
         }
         .preferredColorScheme(.dark)
     }

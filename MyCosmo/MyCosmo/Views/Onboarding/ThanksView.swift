@@ -2,113 +2,129 @@
 //  ThanksView.swift
 //  MyCosmo
 //
-//  Final screen of the onboarding flow with completion action.
-//  Demonstrates scale and spring animations, API credit attribution,
-//  and closure-based completion handling to dismiss onboarding.
-//
-//  Key Features:
-//  - Scale and fade animations for entrance effects
-//  - API credit badges for data source attribution
-//  - Spring animation for smooth transitions
-//  - Completion closure to trigger app entry
-//
-//  Architecture: Final page in onboarding flow.
+//  Final onboarding screen with completion action.
+//  Demonstrates native button styles and elegant credit display.
 //
 
 import SwiftUI
 
 // MARK: - ThanksView
 
-/// Final screen of onboarding thanking user and showing credits.
-/// Uses spring animations and triggers completion to enter the app.
+/// Final onboarding screen with call-to-action.
+/// Learning Focus: Native button styles, refined animations, and aesthetic layouts.
 struct ThanksView: View {
     let completeOnboarding: () -> Void
-    @State private var isAnimated = false
+    @State private var isVisible = false
+    @State private var isPulsing = false
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 36) {
             Spacer()
 
-            // Animated star icon
+            // Animated icon using valid SF Symbol
             Image(systemName: "sparkles")
-                .font(.system(size: 80))
-                .foregroundStyle(.white)
-                .opacity(isAnimated ? 1 : 0)
-                .scaleEffect(isAnimated ? 1 : 0.5)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80, height: 80)
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.orange, .pink, .yellow)
+                .scaleEffect(isPulsing ? 1.15 : 1.0)
+                .animation(
+                    .easeInOut(duration: 2.0).repeatForever(autoreverses: true),
+                    value: isPulsing
+                )
 
-            // Thank you message
-            VStack(spacing: 16) {
-                Text("Thank You!")
-                    .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-
-                Text("Get ready to explore the wonders of our universe")
-                    .font(.title3)
-                    .foregroundColor(.white.opacity(0.8))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 32)
-            }
-            .opacity(isAnimated ? 1 : 0)
-            .offset(y: isAnimated ? 0 : 20)
-
-            // API Credits
+            // Completion message
             VStack(spacing: 12) {
+                Text("You're All Set!")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+
+                Text("Ready to explore the cosmos")
+                    .font(.body)
+                    .foregroundStyle(.white.opacity(0.75))
+            }
+
+            Spacer()
+
+            // Elegant data sources display
+            VStack(spacing: 16) {
                 Text("Powered by")
-                    .font(.footnote)
-                    .foregroundColor(.white.opacity(0.6))
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.white.opacity(0.5))
+                    .textCase(.uppercase)
+                    .tracking(1.2)
 
-                HStack(spacing: 16) {
-                    HStack(spacing: 8) {
-                        Image(systemName: "photo.fill")
-                            .font(.system(size: 14))
-                            .foregroundColor(.orange)
-                        Text("NASA APOD")
-                            .font(.caption)
-                            .foregroundColor(.white.opacity(0.8))
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(Color.white.opacity(0.1))
-                    .cornerRadius(12)
+                HStack(spacing: 12) {
+                    dataSourceBadge(
+                        icon: "photo.fill",
+                        name: "NASA APOD",
+                        color: .orange
+                    )
 
-                    HStack(spacing: 8) {
-                        Image(systemName: "newspaper.fill")
-                            .font(.system(size: 14))
-                            .foregroundColor(.blue)
-                        Text("NewsAPI")
-                            .font(.caption)
-                            .foregroundColor(.white.opacity(0.8))
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(Color.white.opacity(0.1))
-                    .cornerRadius(12)
+                    dataSourceBadge(
+                        icon: "newspaper.fill",
+                        name: "Spaceflight News",
+                        color: .blue
+                    )
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, 32)
-            .opacity(isAnimated ? 1 : 0)
-
-            Spacer()
-
-            // Start button
-            Button(action: completeOnboarding) {
-                Text("Start Exploring")
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(Color.white)
-                    .cornerRadius(16)
-            }
-            .padding(.horizontal, 40)
             .padding(.bottom, 24)
-            .opacity(isAnimated ? 1 : 0)
-        }
-        .onAppear {
-            withAnimation(.spring(duration: 0.8)) {
-                isAnimated = true
+
+            // Native prominent button
+            Button(action: completeOnboarding) {
+                HStack(spacing: 8) {
+                    Text("Start Exploring")
+                        .fontWeight(.semibold)
+                    Image(systemName: "arrow.right")
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
             }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            .tint(.white)
+            .foregroundStyle(.black)
+            .padding(.horizontal, 32)
+            .padding(.bottom, 60)
         }
+        .opacity(isVisible ? 1 : 0)
+        .offset(y: isVisible ? 0 : 40)
+        .onAppear {
+            withAnimation(.spring(duration: 0.8, bounce: 0.4).delay(0.2)) {
+                isVisible = true
+            }
+            isPulsing = true
+        }
+    }
+
+    // MARK: - ViewBuilder for Data Source Badge
+
+    /// Creates a minimal, elegant badge for data sources
+    @ViewBuilder
+    private func dataSourceBadge(icon: String, name: String, color: Color) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: icon)
+                .font(.caption)
+                .foregroundStyle(color)
+
+            Text(name)
+                .font(.caption2)
+                .fontWeight(.medium)
+                .foregroundStyle(.white.opacity(0.8))
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(
+            Capsule()
+                .fill(.white.opacity(0.1))
+                .overlay(
+                    Capsule()
+                        .stroke(.white.opacity(0.2), lineWidth: 0.5)
+                )
+        )
     }
 }
