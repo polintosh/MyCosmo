@@ -20,11 +20,9 @@ There are many ways to contribute to MyCosmo:
 
 ### Prerequisites
 
-- macOS 15+
-- Xcode 18+
-- Swift 6+
-- iOS 18+ (for deployment)
+- A recent macOS with Xcode installed
 - Git
+- The exact Xcode/Swift/iOS deployment target depends on which branch you're working on - see [BRANCHES.md](BRANCHES.md)
 
 ### Setting Up the Development Environment
 
@@ -45,16 +43,13 @@ There are many ways to contribute to MyCosmo:
 
 #### Step 2: Open the Project
 
-1. **Open Xcode 18:**
+1. **Open the project:**
    ```bash
    open MyCosmo.xcodeproj
    ```
 
 2. **Configure project settings:**
-   - Verify **General** tab:
-     - **Minimum Deployments** should be **iOS 18.0**
-   - Verify **Build Settings** tab:
-     - Swift Language Version should be **Swift 6**
+   - Verify **General** tab and **Build Settings** tab match the branch you checked out - see [BRANCHES.md](BRANCHES.md) for each branch's deployment target and Swift language version
 
 #### Step 3: Configure Signing
 
@@ -78,8 +73,7 @@ Most features work without configuration, but for best experience:
 
 **Build errors?**
 - Clean build folder: **Product > Clean Build Folder** (⌘⇧K)
-- Ensure Xcode 18+ is installed
-- Verify Swift 6 language mode is enabled
+- Verify the Swift language mode and deployment target match this branch (see [BRANCHES.md](BRANCHES.md))
 
 **Still having issues?**
 - Open an issue on GitHub with:
@@ -348,9 +342,11 @@ When suggesting features:
 
 ## 🧪 Testing
 
-Currently, MyCosmo doesn't have automated tests, but manual testing is crucial:
+MyCosmo has a `MyCosmoTests` target using [Swift Testing](https://developer.apple.com/documentation/testing) (`import Testing`, `@Test`, `#expect`) covering models, services, and view models. Run the suite with **⌘U** in Xcode, or `xcodebuild test -scheme MyCosmo -destination 'platform=iOS Simulator,name=<simulator>'` from the command line.
 
-### Testing Checklist
+Manual testing still matters for anything a unit test can't cover:
+
+### Manual Testing Checklist
 - [ ] Test on iPhone SE (small screen)
 - [ ] Test on iPhone 15 Pro Max (large screen)
 - [ ] Test on iPad
@@ -361,11 +357,8 @@ Currently, MyCosmo doesn't have automated tests, but manual testing is crucial:
 - [ ] Test edge cases (empty states, errors)
 - [ ] Test accessibility (VoiceOver)
 
-### Future: Unit Tests
-We welcome contributions that add:
-- ViewModel tests
-- Service layer tests
-- Model validation tests
+### Contributing Tests
+New ViewModel methods, service logic, or model computed properties should come with a `@Test` alongside them in `MyCosmoTests/`, mirroring the source file's location (e.g. `ViewModels/News/NewsViewModel.swift` → `ViewModels/NewsViewModelTests.swift`). UI tests aren't set up yet - that's still open if you'd like to add them.
 
 ## 📚 Documentation
 

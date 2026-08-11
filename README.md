@@ -6,6 +6,10 @@
 
 MyCosmo is a comprehensive iOS application that brings the wonders of space exploration and astronomy right to your fingertips. Built with modern Swift technologies, it offers an immersive experience for space enthusiasts to explore, learn, and document their astronomical journey.
 
+## 🎯 This Branch
+
+This is `main`, the **latest** branch - targeting iOS 26.0 with Swift 6, built with Xcode 26. ViewModels use the `@Observable` macro. See [BRANCHES.md](BRANCHES.md) for the full list of branches, including `ios17-baseline` (the oldest OS SwiftData supports) and `ios18`, each showing idiomatic code for that SDK generation.
+
 ## ✨ Features
 
 ### 🌌 Space News Feed
@@ -64,11 +68,10 @@ MyCosmo is a comprehensive iOS application that brings the wonders of space expl
 ## 🛠 Technologies
 
 ### Core Technologies
-- **Swift 6+**: Modern Swift programming with the latest language features and strict concurrency
+- **Swift**: Modern Swift programming, from strict concurrency (Swift 6) down to the classic model (Swift 5) depending on branch - see [BRANCHES.md](BRANCHES.md)
 - **SwiftUI**: Declarative UI framework for native iOS development
-- **iOS 18+**: Leveraging the latest iOS capabilities
+- **SwiftData**: Apple's data persistence framework for local storage - requires iOS 17.0+, the floor for every branch here
 - **Async/Await**: Modern concurrency for efficient asynchronous operations
-- **SwiftData**: Apple's latest data persistence framework for local storage
 
 ### APIs & Services
 - **Spaceflight News API**: Real-time space news aggregation
@@ -120,7 +123,7 @@ MyCosmo/
 │   │   ├── OnboardingView.swift
 │   │   ├── WelcomeView.swift
 │   │   ├── FeaturesView.swift
-│   │   └── GetStartedView.swift
+│   │   └── ThanksView.swift
 │   │
 │   └── Components/
 │       ├── InfoSheet.swift         # Reusable info sheet
@@ -185,62 +188,25 @@ Full control over the app experience including light/dark mode preferences. The 
 ## 🚀 Getting Started
 
 ### Requirements
-- iOS 18+
-- Xcode 18+
-- Swift 6+
-- macOS 15+ (for development)
+
+Requirements vary by branch - see [BRANCHES.md](BRANCHES.md) for the exact Xcode, Swift, and iOS deployment target each one needs. This branch (`main`) needs Xcode 26, Swift 6, and targets iOS 26.0.
 
 ### Installation
 
-⚠️ **Important Note for Collaborators**: This repository currently does not include the `.xcodeproj` file because it was previously in the `.gitignore`. You'll need to create the Xcode project manually following these steps:
-
-#### Option 1: Create Xcode Project from Source Files (Recommended)
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/polintosh/MyCosmo.git
-   cd MyCosmo
-   ```
-
-2. Open Xcode 18 and create a new project:
-   - Select **File > New > Project**
-   - Choose **iOS > App** template
-   - Configure the project:
-     - **Product Name**: MyCosmo
-     - **Team**: Select your development team
-     - **Organization Identifier**: Your identifier (e.g., `com.yourname`)
-     - **Interface**: SwiftUI
-     - **Language**: Swift
-     - **Storage**: SwiftData (important!)
-   - Save it in the root of the cloned repository (next to the existing `MyCosmo` folder)
-
-3. Replace the default source files:
-   - In Xcode's Project Navigator, delete the default `MyCosmoApp.swift` and `ContentView.swift` files
-   - Drag and drop the existing `MyCosmo/MyCosmo` folder from Finder into your Xcode project
-   - When prompted, select:
-     - ✅ **Copy items if needed** (unchecked, since files are already in place)
-     - ✅ **Create groups**
-     - ✅ Add to target: MyCosmo
-
-4. Configure the project settings:
-   - Select the project in the Project Navigator
-   - Under **General** tab:
-     - Set **Minimum Deployments** to iOS 18.0
-   - Under **Build Settings** tab:
-     - Search for "Swift Language Version" and ensure it's set to Swift 6
-
-5. Build and run the project (⌘R)
-
-#### Option 2: Wait for Project File
-If you're having trouble with Option 1, the maintainer will soon add the `.xcodeproj` file to the repository. Check back soon or open an issue requesting it.
-
-### Once the .xcodeproj is Available
 1. Clone the repository:
    ```bash
    git clone https://github.com/polintosh/MyCosmo.git
    ```
-2. Open `MyCosmo.xcodeproj` in Xcode
+2. Open `MyCosmo/MyCosmo.xcodeproj` in Xcode
 3. Select your target device or simulator
 4. Build and run the project (⌘R)
+
+### Running Tests
+
+The `MyCosmoTests` target uses [Swift Testing](https://developer.apple.com/documentation/testing). Run it with **⌘U** in Xcode, or:
+```bash
+xcodebuild test -scheme MyCosmo -destination 'platform=iOS Simulator,name=<simulator name>'
+```
 
 ### API Configuration
 The app uses public APIs that may require API keys:

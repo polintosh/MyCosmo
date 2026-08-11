@@ -73,24 +73,14 @@ The project is configured with **Manual Code Signing** and intentionally leaves 
 To build MyCosmo:
 
 1. Clone the repository
-2. Open `MyCosmo.xcodeproj` in Xcode 18+
-3. Ensure Swift 6 language mode is enabled
+2. Open `MyCosmo.xcodeproj` in Xcode
+3. Verify the Swift language version matches this branch (see [BRANCHES.md](BRANCHES.md))
 4. Select your development team in Signing & Capabilities
 5. Build and run
 
-**Requirements:**
-- Xcode 18+
-- Swift 6+
-- iOS 18+ deployment target
-- macOS 15+ for development
+**Requirements:** vary by branch - see [BRANCHES.md](BRANCHES.md) for the exact Xcode, Swift, and iOS deployment target each one needs.
 
 No additional certificates or profiles are needed for simulator builds. For device testing, use your own Apple Developer account.
-</text>
-
-<old_text line=189>
-## Updates and Maintenance
-
-This security policy is reviewed and updated regularly. Last update: January 2025
 
 ## Reporting Security Vulnerabilities
 
@@ -160,11 +150,7 @@ MyCosmo is licensed under CC BY-NC-SA 4.0:
 
 This security policy is reviewed and updated regularly. Last update: January 2025
 
-**Current Requirements:**
-- Xcode 18+
-- Swift 6+
-- iOS 18+
-- macOS 15+ for development
+**Current Requirements:** see [BRANCHES.md](BRANCHES.md) - they differ per branch (Xcode, Swift, and iOS deployment target).
 
 ---
 
