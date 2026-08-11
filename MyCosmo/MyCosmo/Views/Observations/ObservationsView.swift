@@ -28,7 +28,7 @@ struct ObservationsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) private var colorScheme
     @Query private var observations: [UserObservation]
-    @StateObject private var viewModel: ObservationsViewModel
+    @State private var viewModel: ObservationsViewModel
 
     @State private var selectedCategory: ObservationCategory?
     @State private var selectedImportance: ImportanceLevel?
@@ -43,7 +43,7 @@ struct ObservationsView: View {
         // shared container is the more correct pattern - left as-is here to avoid
         // an unrelated behavior change.
         let context = try! ModelContainer(for: UserObservation.self).mainContext
-        _viewModel = StateObject(wrappedValue: ObservationsViewModel(modelContext: context))
+        _viewModel = State(wrappedValue: ObservationsViewModel(modelContext: context))
     }
 
     /// Filters observations based on selected criteria

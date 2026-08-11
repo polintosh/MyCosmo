@@ -8,11 +8,10 @@
 //
 //  Key Concepts:
 //  - @MainActor: Ensures all properties and methods run on main thread for UI safety
-//  - @Published: Properties that trigger SwiftUI view updates when changed
-//  - ObservableObject: Protocol enabling SwiftUI's reactive data flow
+//  - @Observable: Macro that makes SwiftUI observe property changes automatically,
+//    without needing @Published on each one (the ObservableObject-era pattern)
 //
 
-import Combine
 import Foundation
 import SwiftUI
 
@@ -21,27 +20,28 @@ import SwiftUI
 /// Manages state and data flow for space news and APOD features.
 /// Coordinates between SpaceNewsService/APODService and the news views.
 @MainActor
-class NewsViewModel: ObservableObject {
+@Observable
+class NewsViewModel {
 
-    // MARK: - Published Properties
+    // MARK: - Observable Properties
 
     /// NASA's Astronomy Picture of the Day data
-    @Published var apodData: APODResponse?
+    var apodData: APODResponse?
 
     /// Error state for APOD fetching
-    @Published var apodError: Error?
+    var apodError: Error?
 
     /// Collection of space news articles
-    @Published var newsArticles: [SpaceNewsArticle] = []
+    var newsArticles: [SpaceNewsArticle] = []
 
     /// Currently selected news category filter
-    @Published var selectedNewsType: NewsType = .all
+    var selectedNewsType: NewsType = .all
 
     /// Loading state indicator for UI feedback
-    @Published var isLoading = false
+    var isLoading = false
 
     /// Error state for news fetching
-    @Published var error: Error?
+    var error: Error?
 
     // MARK: - Private Properties
 

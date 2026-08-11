@@ -23,7 +23,7 @@ import SwiftUI
 /// Main view for space news and NASA's APOD.
 /// Uses ViewModel for state management and service layer communication.
 struct NewsView: View {
-    @StateObject private var viewModel = NewsViewModel()
+    @State private var viewModel = NewsViewModel()
     @State private var showingAPOD = false
     @State private var showingInfo = false
     @Environment(\.colorScheme) private var colorScheme

@@ -154,7 +154,7 @@ MyCosmo/
 #### MVVM (Model-View-ViewModel)
 - **Models**: Pure data structures representing app entities
 - **Views**: SwiftUI views focusing purely on UI presentation
-- **ViewModels**: `@MainActor` classes handling business logic and state management
+- **ViewModels**: `@MainActor @Observable` classes handling business logic and state management
 
 #### Service Layer
 - Dedicated service classes for external API communication
@@ -167,8 +167,8 @@ MyCosmo/
 - **@Query**: Reactive SwiftData queries with automatic UI updates
 
 #### State Management
-- `@Published` properties in ViewModels for reactive updates
-- `@State` and `@StateObject` in Views for local and observed state
+- `@Observable` macro on ViewModels - properties trigger view updates automatically, no `@Published` needed
+- `@State` in Views for both local state and holding `@Observable` view models
 - `@Environment` for system-wide settings (colorScheme, modelContext)
 
 ## 📱 Key Features Deep Dive

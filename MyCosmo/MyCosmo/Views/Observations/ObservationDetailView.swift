@@ -22,7 +22,7 @@ import SwiftUI
 /// Detail view displaying comprehensive observation information.
 /// Shows image gallery, metadata tags, and full description.
 struct ObservationDetailView: View {
-    @StateObject private var viewModel: ObservationDetailViewModel
+    @State private var viewModel: ObservationDetailViewModel
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var selectedImageIndex = 0
@@ -33,7 +33,7 @@ struct ObservationDetailView: View {
     ]
 
     init(observation: UserObservation) {
-        _viewModel = StateObject(wrappedValue: ObservationDetailViewModel(observation: observation))
+        _viewModel = State(wrappedValue: ObservationDetailViewModel(observation: observation))
     }
 
     var body: some View {

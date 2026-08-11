@@ -7,9 +7,9 @@
 //  Integrates with SwiftData for persistent storage of observations.
 //
 //  Architecture: Mediates between observation list views and SwiftData's ModelContext.
+//  Uses @Observable (not ObservableObject/@Published) so SwiftUI observes property changes automatically.
 //
 
-import Combine
 import SwiftData
 import SwiftUI
 
@@ -18,12 +18,13 @@ import SwiftUI
 /// Manages state and operations for the observations list view.
 /// Coordinates observation creation, deletion, and persistence through SwiftData.
 @MainActor
-class ObservationsViewModel: ObservableObject {
+@Observable
+class ObservationsViewModel {
 
-    // MARK: - Published Properties
+    // MARK: - Observable Properties
 
     /// Controls visibility of the add observation sheet
-    @Published var showingAddSheet = false
+    var showingAddSheet = false
 
     // MARK: - Properties
 

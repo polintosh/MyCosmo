@@ -23,7 +23,7 @@ import SwiftUI
 /// Main view for browsing planets in the solar system.
 /// Displays list of planets with navigation to detailed information.
 struct SolarSystemView: View {
-    @StateObject private var viewModel = SolarSystemViewModel()
+    @State private var viewModel = SolarSystemViewModel()
     @Environment(\.colorScheme) private var colorScheme
     @State private var showingInfo = false
 
@@ -172,7 +172,7 @@ struct SolarSystemView: View {
 struct PlanetCard: View {
     let planet: PlanetData
     @Environment(\.colorScheme) private var colorScheme
-    @ObservedObject var viewModel: SolarSystemViewModel
+    let viewModel: SolarSystemViewModel
 
     var body: some View {
         Button {

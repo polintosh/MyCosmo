@@ -7,9 +7,9 @@
 //  Uses @MainActor to ensure UI updates occur on the main thread.
 //
 //  Architecture: Connects observation detail views with SwiftData's ModelContext.
+//  Uses @Observable (not ObservableObject/@Published) so SwiftUI observes property changes automatically.
 //
 
-import Combine
 import SwiftData
 import SwiftUI
 
@@ -18,7 +18,8 @@ import SwiftUI
 /// Manages state and actions for displaying and editing a single observation.
 /// Provides formatted data for views and handles deletion logic.
 @MainActor
-class ObservationDetailViewModel: ObservableObject {
+@Observable
+class ObservationDetailViewModel {
 
     // MARK: - Properties
 
@@ -26,10 +27,10 @@ class ObservationDetailViewModel: ObservableObject {
     let observation: UserObservation
 
     /// Controls visibility of delete confirmation alert
-    @Published var showDeleteAlert = false
+    var showDeleteAlert = false
 
     /// Triggers dismissal of detail view after deletion
-    @Published var shouldDismiss = false
+    var shouldDismiss = false
 
     /// SwiftData context for persistence operations
     private let modelContext: ModelContext

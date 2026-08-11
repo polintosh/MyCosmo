@@ -7,9 +7,9 @@
 //  Uses async/await for data operations and @MainActor for thread-safe UI updates.
 //
 //  Architecture: Coordinates between SolarSystemService and solar system views in MVVM pattern.
+//  Uses @Observable (not ObservableObject/@Published) so SwiftUI observes property changes automatically.
 //
 
-import Combine
 import Foundation
 
 // MARK: - SolarSystemViewModel
@@ -17,21 +17,22 @@ import Foundation
 /// Manages state and data flow for solar system exploration features.
 /// Fetches planet data from service layer and maintains selected planet state.
 @MainActor
-class SolarSystemViewModel: ObservableObject {
+@Observable
+class SolarSystemViewModel {
 
-    // MARK: - Published Properties
+    // MARK: - Observable Properties
 
     /// Array of all planets in the solar system
-    @Published var planets: [PlanetData] = []
+    var planets: [PlanetData] = []
 
     /// Currently selected planet for detailed view
-    @Published var selectedPlanet: PlanetData?
+    var selectedPlanet: PlanetData?
 
     /// Loading state indicator for UI feedback
-    @Published var isLoading = false
+    var isLoading = false
 
     /// Error state for handling fetch failures
-    @Published var error: Error?
+    var error: Error?
 
     // MARK: - Private Properties
 
