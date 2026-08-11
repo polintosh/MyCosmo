@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		FC389B94A8ABB4B79FE86675 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 718688902EA53D02009CF0DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 718688972EA53D02009CF0DE;
+			remoteInfo = MyCosmo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		718688982EA53D02009CF0DE /* MyCosmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCosmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D240247B452C28D3FE9D7453 /* MyCosmoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCosmoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = MyCosmo;
 			sourceTree = "<group>";
 		};
+		9C1323182CD96AADA99E7D70 /* MyCosmoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MyCosmoTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		718688952EA53D02009CF0DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B63B095F5EC0856970C36ECC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				7186889A2EA53D02009CF0DE /* MyCosmo */,
+				9C1323182CD96AADA99E7D70 /* MyCosmoTests */,
 				718688992EA53D02009CF0DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				718688982EA53D02009CF0DE /* MyCosmo.app */,
+				D240247B452C28D3FE9D7453 /* MyCosmoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 718688982EA53D02009CF0DE /* MyCosmo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		446FD9A3D1B8B384F1B627E5 /* MyCosmoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC47E623182AD0AAD7F8EC62 /* Build configuration list for PBXNativeTarget "MyCosmoTests" */;
+			buildPhases = (
+				2FFDC9FB60C402DE5D160ECB /* Sources */,
+				B63B095F5EC0856970C36ECC /* Frameworks */,
+				FD6529793C0FB25E69F31951 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA352AECDBD8535BCB2E543A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9C1323182CD96AADA99E7D70 /* MyCosmoTests */,
+			);
+			name = MyCosmoTests;
+			packageProductDependencies = (
+			);
+			productName = MyCosmoTests;
+			productReference = D240247B452C28D3FE9D7453 /* MyCosmoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					718688972EA53D02009CF0DE = {
 						CreatedOnToolsVersion = 26.0.1;
+					};
+					446FD9A3D1B8B384F1B627E5 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 718688972EA53D02009CF0DE;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				718688972EA53D02009CF0DE /* MyCosmo */,
+				446FD9A3D1B8B384F1B627E5 /* MyCosmoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		718688962EA53D02009CF0DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD6529793C0FB25E69F31951 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2FFDC9FB60C402DE5D160ECB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA352AECDBD8535BCB2E543A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 718688972EA53D02009CF0DE /* MyCosmo */;
+			targetProxy = FC389B94A8ABB4B79FE86675 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		718688A32EA53D03009CF0DE /* Debug */ = {
@@ -324,6 +399,48 @@
 			};
 			name = Release;
 		};
+		1FA24A3FB6DCDCAE4D2796C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyCosmoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCosmo.app/MyCosmo";
+			};
+			name = Debug;
+		};
+		212594691112DDF8DF2CB9BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MyCosmoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCosmo.app/MyCosmo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -341,6 +458,15 @@
 			buildConfigurations = (
 				718688A62EA53D03009CF0DE /* Debug */,
 				718688A72EA53D03009CF0DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC47E623182AD0AAD7F8EC62 /* Build configuration list for PBXNativeTarget "MyCosmoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FA24A3FB6DCDCAE4D2796C8 /* Debug */,
+				212594691112DDF8DF2CB9BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
