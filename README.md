@@ -8,7 +8,7 @@ MyCosmo is a comprehensive iOS application that brings the wonders of space expl
 
 ## 🎯 This Branch
 
-This is `main`, the **latest** branch - targeting iOS 26.0 with Swift 6, built with Xcode 26. ViewModels use the `@Observable` macro. See [BRANCHES.md](BRANCHES.md) for the full list of branches, including `ios17-baseline` (the oldest OS SwiftData supports) and `ios18`, each showing idiomatic code for that SDK generation.
+This is `ios17-baseline`, targeting iOS 17.0 - the oldest OS [SwiftData](https://developer.apple.com/documentation/swiftdata) supports - using Swift 5 language mode. ViewModels use the classic `ObservableObject`/`@Published` pattern with explicit `@MainActor` annotations, since the Swift 6-only `SWIFT_DEFAULT_ACTOR_ISOLATION` build setting isn't available here. See [BRANCHES.md](BRANCHES.md) for `ios18` and `main`, which show later patterns.
 
 ## ✨ Features
 
@@ -189,7 +189,7 @@ Full control over the app experience including light/dark mode preferences. The 
 
 ### Requirements
 
-Requirements vary by branch - see [BRANCHES.md](BRANCHES.md) for the exact Xcode, Swift, and iOS deployment target each one needs. This branch (`main`) needs Xcode 26, Swift 6, and targets iOS 26.0.
+Requirements vary by branch - see [BRANCHES.md](BRANCHES.md) for the exact Xcode, Swift, and iOS deployment target each one needs. This branch (`ios17-baseline`) needs Xcode 16+, Swift 5 language mode, and targets iOS 17.0.
 
 ### Installation
 

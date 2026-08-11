@@ -3,7 +3,7 @@
 //  MyCosmo
 //
 //  Service layer for fetching NASA's Astronomy Picture of the Day (APOD).
-//  Uses Swift 6 async/await for modern asynchronous networking.
+//  Uses async/await for modern asynchronous networking.
 //  Handles API key management and rate limiting.
 //
 //  Architecture: Service layer in MVVM - consumed by ViewModels for data fetching.
@@ -23,7 +23,7 @@ protocol APODFetching: Sendable {
 
 /// Service for fetching NASA's APOD data using async/await networking.
 ///
-/// Swift 6 Concurrency Design:
+/// Concurrency-Safe Design:
 /// - Uses struct (not actor) since there's no mutable state to protect
 /// - All methods are async and naturally thread-safe through Swift's async/await
 /// - No isolation required - each call is independent and stateless
@@ -34,7 +34,7 @@ struct APODService: APODFetching {
 
     /// Fetches the Astronomy Picture of the Day from NASA's API
     ///
-    /// Swift 6 Note: This method is naturally concurrency-safe because:
+    /// This method is naturally concurrency-safe because:
     /// - It's stateless (no shared mutable state)
     /// - URLSession.shared is already thread-safe
     /// - JSONDecoder is created fresh for each call (no sharing)
@@ -90,7 +90,7 @@ struct APODService: APODFetching {
     /// Checks remaining API requests available for the current API key
     /// NASA's rate limit information is returned in HTTP headers
     ///
-    /// Swift 6 Note: This method is thread-safe for the same reasons as fetchAPOD()
+    /// This method is thread-safe for the same reasons as fetchAPOD()
     /// - Returns: Number of remaining API calls, or nil if unavailable
     func getRemainingAPIRequests() async -> Int? {
         // Fetch API key from UserDefaults

@@ -25,7 +25,7 @@ protocol SpaceNewsFetching: Sendable {
 
 /// Service for fetching space news from Spaceflight News API.
 ///
-/// Swift 6 Concurrency Design:
+/// Concurrency-Safe Design:
 /// - Uses struct (not actor) since there's no mutable state to protect
 /// - All methods are async and naturally thread-safe through Swift's async/await
 /// - No isolation required - each call is independent and stateless
@@ -36,7 +36,7 @@ struct SpaceNewsService: SpaceNewsFetching {
 
     /// Fetches space news articles based on type and limit
     ///
-    /// Swift 6 Note: This method is naturally concurrency-safe because:
+    /// This method is naturally concurrency-safe because:
     /// - It's stateless (no shared mutable state)
     /// - URLSession.shared is already thread-safe
     /// - JSONDecoder is created fresh for each call (no sharing)
@@ -84,7 +84,7 @@ struct SpaceNewsService: SpaceNewsFetching {
 /// Container for paginated response from Spaceflight News API.
 /// API returns metadata for pagination alongside the actual article results.
 ///
-/// Swift 6 Note: Marked as Sendable because:
+/// Marked as Sendable because:
 /// - All properties are immutable (let)
 /// - All property types are Sendable (Int, String?, [SpaceNewsArticle])
 /// - SpaceNewsArticle is also Sendable
