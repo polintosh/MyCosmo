@@ -121,6 +121,6 @@ struct APODService: APODFetching {
 // MARK: - API Errors
 
 /// Custom errors for API operations
-enum APIError: Error {
+enum APIError: Error, Sendable {
     case missingAPIKey
 }
