@@ -37,6 +37,11 @@ struct ObservationsView: View {
     @State private var showingInfo = false
 
     init() {
+        // Note: this builds a second, separate ModelContainer rather than reusing
+        // the one already injected by MyCosmoApp (available via @Environment(\.modelContext)
+        // above). Both point at the same on-disk store, so it works, but a single
+        // shared container is the more correct pattern - left as-is here to avoid
+        // an unrelated behavior change.
         let context = try! ModelContainer(for: UserObservation.self).mainContext
         _viewModel = StateObject(wrappedValue: ObservationsViewModel(modelContext: context))
     }
