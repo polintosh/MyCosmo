@@ -11,6 +11,14 @@
 
 import Foundation
 
+// MARK: - APODFetching
+
+/// Abstraction over APODService's fetch so NewsViewModel can be tested
+/// against a mock instead of hitting NASA's live API.
+protocol APODFetching: Sendable {
+    func fetchAPOD() async throws -> APODResponse
+}
+
 // MARK: - APODService
 
 /// Service for fetching NASA's APOD data using async/await networking.
@@ -20,7 +28,7 @@ import Foundation
 /// - All methods are async and naturally thread-safe through Swift's async/await
 /// - No isolation required - each call is independent and stateless
 /// - URLSession.shared handles its own thread-safety internally
-struct APODService {
+struct APODService: APODFetching {
 
     private let baseURL = "https://api.nasa.gov/planetary/apod"
 

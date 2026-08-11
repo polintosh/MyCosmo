@@ -11,6 +11,16 @@
 
 import Foundation
 
+// MARK: - SpaceNewsFetching
+
+/// Abstraction over SpaceNewsService's fetch so NewsViewModel can be tested
+/// against a mock instead of hitting the live API. Protocol requirements can't
+/// carry default argument values, so `limit` must always be passed explicitly
+/// through this type (SpaceNewsService's own default still applies when called directly).
+protocol SpaceNewsFetching: Sendable {
+    func fetchNews(type: NewsType, limit: Int) async throws -> [SpaceNewsArticle]
+}
+
 // MARK: - SpaceNewsService
 
 /// Service for fetching space news from Spaceflight News API.
@@ -20,7 +30,7 @@ import Foundation
 /// - All methods are async and naturally thread-safe through Swift's async/await
 /// - No isolation required - each call is independent and stateless
 /// - URLSession.shared handles its own thread-safety internally
-struct SpaceNewsService {
+struct SpaceNewsService: SpaceNewsFetching {
 
     private let baseURL = "https://api.spaceflightnewsapi.net/v4"
 

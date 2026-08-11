@@ -45,15 +45,16 @@ class NewsViewModel: ObservableObject {
 
     // MARK: - Private Properties
 
-    private let nasaService: APODService
-    private let spaceNewsService: SpaceNewsService
+    private let nasaService: APODFetching
+    private let spaceNewsService: SpaceNewsFetching
 
     // MARK: - Initialization
 
-    /// Initializes with dependency injection for testability
+    /// Initializes with dependency injection for testability - defaults to the
+    /// real services, but accepts mocks conforming to APODFetching/SpaceNewsFetching in tests
     init(
-        nasaService: APODService = APODService(),
-        spaceNewsService: SpaceNewsService = SpaceNewsService()
+        nasaService: APODFetching = APODService(),
+        spaceNewsService: SpaceNewsFetching = SpaceNewsService()
     ) {
         self.nasaService = nasaService
         self.spaceNewsService = spaceNewsService
@@ -80,7 +81,7 @@ class NewsViewModel: ObservableObject {
         isLoading = true
         do {
             error = nil
-            newsArticles = try await spaceNewsService.fetchNews(type: selectedNewsType)
+            newsArticles = try await spaceNewsService.fetchNews(type: selectedNewsType, limit: 20)
         } catch {
             self.error = error
             print("Error fetching news: \(error)")
