@@ -8,7 +8,7 @@ MyCosmo is a comprehensive iOS application that brings the wonders of space expl
 
 ## 🎯 This Branch
 
-This is `main`, the **latest** branch - targeting iOS 26.0 with Swift 6, built with Xcode 26. ViewModels use the `@Observable` macro. See [BRANCHES.md](BRANCHES.md) for the full list of branches, including `ios17-baseline` (the oldest OS SwiftData supports) and `ios18`, each showing idiomatic code for that SDK generation.
+This is `main`, the **latest** branch - targeting iOS 26.0 with Swift 6, built with Xcode 26. ViewModels use the `@Observable` macro, and navigation adopts Liquid Glass: `MainTabView` uses `.tabBarMinimizeBehavior(.onScrollDown)` on top of `ios18`'s `Tab`/`.sidebarAdaptable`, and `InfoSheet`'s icon badge uses `.glassEffect()` instead of a manual color-scheme-conditional fill. See [BRANCHES.md](BRANCHES.md) for the full list of branches, including `ios17-baseline` (the oldest OS SwiftData supports) and `ios18`, each showing idiomatic code for that SDK generation.
 
 ## ✨ Features
 

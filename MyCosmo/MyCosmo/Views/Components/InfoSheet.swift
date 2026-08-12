@@ -7,6 +7,8 @@
 //  Used throughout the app to show feature details and implementation info.
 //
 //  Architecture: Reusable UI component in the View layer.
+//  The icon badge uses iOS 26's .glassEffect() instead of a manual
+//  color-scheme-conditional Circle fill + shadow.
 //
 
 import SwiftUI
@@ -39,18 +41,14 @@ struct InfoSheet: View {
                 // Header Section
                 Section {
                     VStack(spacing: 16) {
-                        // Icon Circle
-                        ZStack {
-                            Circle()
-                                .fill(colorScheme == .dark ? Color(.systemGray6) : .white)
-                                .frame(width: 100, height: 100)
-                                .shadow(color: .black.opacity(0.1), radius: 10)
-
-                            Image(systemName: content.icon)
-                                .font(.system(size: 40))
-                                .foregroundStyle(colorScheme == .dark ? .blue : .indigo)
-                        }
-                        .padding(.top, 16)
+                        // Icon Badge - Liquid Glass adapts to light/dark automatically,
+                        // replacing the old manual colorScheme-conditional fill + shadow.
+                        Image(systemName: content.icon)
+                            .font(.system(size: 40))
+                            .foregroundStyle(colorScheme == .dark ? .blue : .indigo)
+                            .frame(width: 100, height: 100)
+                            .glassEffect(.regular, in: .circle)
+                            .padding(.top, 16)
 
                         // Title and Subtitle
                         VStack(spacing: 8) {
