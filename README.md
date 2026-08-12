@@ -8,7 +8,7 @@ MyCosmo is a comprehensive iOS application that brings the wonders of space expl
 
 ## 🎯 This Branch
 
-This is `main`, the **latest** branch - targeting iOS 26.0 with Swift 6, built with Xcode 26. ViewModels use the `@Observable` macro. See [BRANCHES.md](BRANCHES.md) for the full list of branches, including `ios17-baseline` (the oldest OS SwiftData supports) and `ios18`, each showing idiomatic code for that SDK generation.
+This is `ios18`, targeting iOS 18.0 with Swift 6 language mode. ViewModels use the `@Observable` macro. Navigation adopts iOS 18's `Tab`-based `TabView` with `.sidebarAdaptable` (see [MainTabView.swift](MyCosmo/MyCosmo/Views/MainTabView.swift)), which becomes a sidebar on iPad. See [BRANCHES.md](BRANCHES.md) for `ios17-baseline` (the pre-`@Observable` pattern) and `main` (the newest SDK generation).
 
 ## ✨ Features
 
@@ -189,7 +189,7 @@ Full control over the app experience including light/dark mode preferences. The 
 
 ### Requirements
 
-Requirements vary by branch - see [BRANCHES.md](BRANCHES.md) for the exact Xcode, Swift, and iOS deployment target each one needs. This branch (`main`) needs Xcode 26, Swift 6, and targets iOS 26.0.
+Requirements vary by branch - see [BRANCHES.md](BRANCHES.md) for the exact Xcode, Swift, and iOS deployment target each one needs. This branch (`ios18`) needs Xcode 16+, Swift 6, and targets iOS 18.0.
 
 ### Installation
 
